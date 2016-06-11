@@ -56,7 +56,7 @@ public class AFKMethod extends BukkitRunnable{
                  plugin.Location.put(p, L);
                  continue;
              }*/
-             Location CL = plugin.Location.get(p);
+             Location CL = plugin.Location.get(p); //ココで何故かエラー吐く…
              plugin.cLog.debug("LoadLocation: " + CL);
              plugin.cLog.debug("Location: " + L);
              plugin.cLog.debug("LoadLocation: " + CL);
