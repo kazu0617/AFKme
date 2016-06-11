@@ -23,7 +23,6 @@
  */
 package net.kazu0617.afkme;
 
-import java.io.IOException;
 import java.util.Collection;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -59,7 +58,6 @@ public class AFKMethod extends BukkitRunnable{
              Location CL = plugin.Location.get(p); //ココで何故かエラー吐く…
              plugin.cLog.debug("LoadLocation: " + CL);
              plugin.cLog.debug("Location: " + L);
-             plugin.cLog.debug("LoadLocation: " + CL);
              plugin.Location.put(p, L);
              if (L == CL) AFK = true;
              plugin.cLog.debug("AFK = " + AFK);
