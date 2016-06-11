@@ -60,6 +60,9 @@ public class Main extends JavaPlugin implements Listener{
         this.getServer().getScheduler().runTaskTimer(this, AFKMethod, 0L, 20L);
         int afktime = FileIO.getTime();
         cLog.debug("AFKTime = " + afktime);
+        Location = new HashMap<>();
+        DisplayName = new HashMap<>();
+        afkcount = new HashMap<>();
     }
     public void onLogin(PlayerJoinEvent e) {
         Location.put(e.getPlayer(), e.getPlayer().getLocation());
@@ -95,14 +98,14 @@ public class Main extends JavaPlugin implements Listener{
             if (count < afktime) {
                 Bukkit.dispatchCommand(p, "me is afk");
                 DisplayName.get(p);
-                p.setDisplayName(ChatColor.GRAY + p.getDisplayName());
+                p.setPlayerListName(ChatColor.GRAY + p.getDisplayName());
                 Location.put(p, L);
                 count = afktime + 1;
                 afkcount.put(p, count);
 
             } else if (count >= afktime) {
                 Bukkit.dispatchCommand(p, "me is no longer afk");
-                p.setDisplayName(DisplayName.get(p));
+                p.setPlayerListName(DisplayName.get(p));
                 afkcount.put(p, 0);
 
             }
@@ -111,5 +114,4 @@ public class Main extends JavaPlugin implements Listener{
         }
         return true;
     }
-
 }
