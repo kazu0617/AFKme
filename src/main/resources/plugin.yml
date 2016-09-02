@@ -1,9 +1,17 @@
 main: net.kazu0617.afkme.Main
 name: AFKme
 author: [kazu0617]
-version: 0.1.0
+version: 0.1.1
 
 commands:
   afkme:
     description: use Plugin Command
-    aliases: [afk]
+  afk:
+    description: use AFK
+permissions:
+  afkme.use:
+    description: to Use Normal Mode
+    default: true
+  afkme.DebugMode:
+    description: to Use Debug Mode
+    default: false

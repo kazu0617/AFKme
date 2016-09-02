@@ -48,7 +48,11 @@ public class AFKMethod extends BukkitRunnable{
          for (Player p : players) {
              Location L = p.getLocation();
              boolean AFK = false;
-             plugin.cLog.debug("player: " + p);
+             if(!p.hasPermission("AFKme.use")){
+                plugin.cLog.Message(p, "権限がありません。");
+                continue;
+             }
+             plugin.cLog.debug("player: " + p + ",Permission: "+ p.hasPermission("AFKme.use"));
              int count;
              //現在のLocationと保存されているLocationの比較.もし同じならAFKをtrueに変更.
              if (!plugin.Location.containsKey(p)) {
@@ -91,8 +95,8 @@ public class AFKMethod extends BukkitRunnable{
              }
              if (plugin.afkcount.get(p) == afktime) {//countとafktimeが同じであれば,離席モードへ入る.
                  String D = p.getPlayerListName();
-                 if (!plugin.DebugMode) Bukkit.dispatchCommand(p, "me is afk");
-                 if (!plugin.DebugMode) plugin.cLog.debug("離席: " + p);
+                 if (plugin.DebugMode) plugin.cLog.debug("離席: " + p);
+                 else Bukkit.dispatchCommand(p, "me is afk");
                  plugin.DisplayName.put(p, D);
                  p.setPlayerListName(ChatColor.GRAY + D);
              }

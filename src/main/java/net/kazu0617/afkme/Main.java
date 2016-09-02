@@ -31,6 +31,7 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -42,8 +43,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class Main extends JavaPlugin implements Listener{
     //Todo AFK時の仕様をもう少し共有化出来るようにする。
-    String Pluginprefix = "[" + ChatColor.GREEN + getDescription().getName() + ChatColor.RESET + "] ";
-    String Pluginname = "[" + getDescription().getName() +"] ";
+     String Pluginname = getDescription().getName();
     public ConsoleLog cLog = new ConsoleLog(this);
     public AFKMethod AFKMethod = new AFKMethod(this);
     public FileIO FileIO = new FileIO(this);
@@ -64,11 +64,13 @@ public class Main extends JavaPlugin implements Listener{
         DisplayName = new HashMap<>();
         afkcount = new HashMap<>();
     }
+    @EventHandler
     public void onLogin(PlayerJoinEvent e) {
         Location.put(e.getPlayer(), e.getPlayer().getLocation());
         afkcount.put(e.getPlayer(), 0);
         DisplayName.put(e.getPlayer(), e.getPlayer().getDisplayName());
     }
+    @EventHandler
     public void onLogout(PlayerQuitEvent e){
         Location.remove(e.getPlayer());
         afkcount.remove(e.getPlayer());
@@ -78,7 +80,8 @@ public class Main extends JavaPlugin implements Listener{
         if ((args.length >= 1) && ("DebugMode").startsWith(args[0])) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
-                if (!p.hasPermission("blockrandomdrop.debug")) {
+                if (!p.hasPermission("AFKme.DebugMode")) {
+                    cLog.Message(p, "権限がありません…", 2);
                     return true;
                 }
             }
@@ -92,6 +95,10 @@ public class Main extends JavaPlugin implements Listener{
         } else if ((args.length == 0) && "afk".equalsIgnoreCase(label)) {
             Player p = (Player) sender;
             Location L = p.getLocation();
+            if(!p.hasPermission("AFKme.use")){
+                cLog.Message(p, "権限がありません。");
+                return true;
+            }
             boolean AFK = false;
             int count = afkcount.get(p);
             int afktime = FileIO.getTime();
