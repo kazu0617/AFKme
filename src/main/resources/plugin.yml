@@ -1,7 +1,7 @@
 main: net.kazu0617.afkme.Main
 name: AFKme
 author: [kazu0617]
-version: 0.1.1
+version: 0.1.2
 
 commands:
   afkme:
@@ -15,3 +15,4 @@ permissions:
   afkme.DebugMode:
     description: to Use Debug Mode
     default: false
+

@@ -9,13 +9,15 @@ import org.bukkit.entity.Player;
 public class ConsoleLog {
 
     Main plugin;
+    String Pluginname = null;
 
     public ConsoleLog(Main instance) {
         this.plugin = instance;
+        String Pluginname = plugin.Pluginname;
     }
     public static final Logger log = Logger.getLogger("Minecraft");
-    private String cPrefix = "["+plugin.Pluginname+"] ";
-    private String Pluginprefix = "[" + ChatColor.GREEN + plugin.Pluginname + ChatColor.RESET +"] ";
+    private String cPrefix = "["+Pluginname+"] ";
+    private String Pluginprefix = "[" + ChatColor.GREEN + Pluginname + ChatColor.RESET +"] ";
     private final String pError = "[" + ChatColor.RED+ "ERROR" + ChatColor.RESET+"] ";
     private final String pInfo =  "[" + ChatColor.RED+ "Info" + ChatColor.RESET+"] ";
 

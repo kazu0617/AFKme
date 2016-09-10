@@ -92,7 +92,7 @@ public class Main extends JavaPlugin implements Listener{
             }
             cLog.BroadCast("DebugModeが" + DebugMode + "に変更されました");
             return true;
-        } else if ((args.length == 0) && "afk".equalsIgnoreCase(label)) {
+        } else if ((args.length == 0) && "afk".equalsIgnoreCase(label) && sender instanceof Player) {
             Player p = (Player) sender;
             Location L = p.getLocation();
             if(!p.hasPermission("AFKme.use")){
