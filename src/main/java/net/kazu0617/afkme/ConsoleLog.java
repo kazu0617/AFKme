@@ -6,6 +6,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+/**
+ * @author     kazu0617
+ * @license    MIT
+ * @copyright  Copyright kazu0617 2015
+ */
 public class ConsoleLog {
 
     Main plugin;
