@@ -58,7 +58,7 @@ public class Main extends JavaPlugin implements Listener{
         if ((args.length >= 1) && ("DebugMode").startsWith(args[0])) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
-                if (!p.hasPermission("AFKme.DebugMode")) {
+                if (!p.hasPermission("afkme.DebugMode")) {
                     cLog.Message(p, "権限がありません…", 2);
                     return true;
                 }
@@ -73,7 +73,7 @@ public class Main extends JavaPlugin implements Listener{
         } else if ((args.length == 0) && "afk".equalsIgnoreCase(label) && sender instanceof Player) {
             Player p = (Player) sender;
             Location L = p.getLocation();
-            if(!p.hasPermission("AFKme.use")){
+            if(!p.hasPermission("afkme.use")){
                 cLog.Message(p, "権限がありません。");
                 return true;
             }
