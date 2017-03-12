@@ -1,6 +1,5 @@
 sudo: false
 language: java
-cache: bundler
 jdk:
   - oraclejdk8
 notifications:
