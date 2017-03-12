@@ -8,6 +8,5 @@ before_install:
   - git config --global user.email "kazu0617@hotmail.co.jp"
   - git config --global user.name "kazu0617"
 cache:
-  - bundler
   directories:
   - $HOME/.m2
