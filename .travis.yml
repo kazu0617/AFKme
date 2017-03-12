@@ -1,3 +1,14 @@
+sudo: false
 language: java
 jdk:
+  - openjdk7
+  - oraclejdk7
   - oraclejdk8
+notifications:
+  email: false
+before_install:
+  - git config --global user.email "kazu0617@hotmail.co.jp"
+  - git config --global user.name "kazu0617"
+cache:
+  directories:
+  - $HOME/.m2
